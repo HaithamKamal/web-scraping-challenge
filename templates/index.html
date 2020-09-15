@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mission to Mars</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- All Black Background -->
+    <style>
+      body {
+        background-color: #100005;
+        background-image: url('http://marsnews.com/wp-content/uploads/2015/03/stars.jpg');
+      }
+    </style>
+  </head>
+
+  <!-- Create Container -->
+  <body>
+    <div class="container">
+        <!-- Add Jumbotron w/ Image URL -->
+        <div class="jumbotron text-center" style="background-image: url(https://image.freepik.com/free-photo/mars-background-starry-space-red-planet-surface_158582-831.jpg); background-size: 100%; height: 352px;">
+          <h1 class="display-4" style="font-family: fantasy; color: rgb(255, 115, 0)">Mission to Mars</h1>
+          <!-- Add Button with link to mars_app -->
+          <a class="btn btn-lg text-white" style="background-color:#575757; color: white" href="/scrape" role="button">Scrape Mars Data</a>
+      </div>
+
+      <!-- Add Recent News -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h3 style="font-family: Segoe UI; color: white"><b>Most Recent Mars News</b></h3>
+              <hr class="my-1">
+              <hr color="red">
+              <h5 class="media-heading" style="font-family: Segoe UI; color: rgb(97, 96, 96)"><b>{{mars.news_title}}</b></h5>
+              <h7 style="color: white"><p>{{mars.news_paragraph}}</p></h7>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Featured Image -->
+      <div class="row">
+        <div class="col-md-6">
+          <h4 style="font-family: Segoe UI; color: white"><b>Featured Mars Image</b></h4>
+            <img src="{{mars.featured_image_url}}" style="width: 75%; height: 75%;" class="img-responsive">
+        </div>
+        
+          <!-- Add Mars HTML Facts Table - Safe used to show table data -->
+          <div class="row">
+            <div class="col-md-6" style="color: white"></div>
+            <h3 style="font-family: Segoe UI; color: white"><b></b>Mars Facts</b></h3>
+              <p style=>{{mars.mars_facts | safe}}</p> 
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="container">
+      <div class="row" style="margin-top: 80px;">
+        <div class="page-header col-md-12">
+          <h3 class="text-center" style="font-family: Segoe UI; color: white"><b>Mars Hemispheres</b></h3>
+        </div>
+        {% for hemisphere in mars.hemisphere_image_urls %}
+          <div class="col-md-6">
+            <div class="card"; style="background-color: #100005"; width: 35rem;">
+              <img class="card-img-top" src="{{hemisphere.img_url}}" style="width: 80%; height: 80%;">
+              <div class="card-body">
+                <div class="card-text"; style="font-family: Segoe UI; color: white">
+                  <h3><b>{{hemisphere.title}}</b></h3>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+  </html>
